@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // אנימציית כניסה בגלילה
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -45,3 +46,46 @@ function switchLanguage(lang) {
     document.querySelector('.testimonials h2').innerText = 'What Our Clients Say';
   }
 }
+=======
+// ✅ אנימציית הופעה חלקה (fade-in)
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ✅ פתיחת טופס הרשמה חדש בלחיצה (אם יש כפתור עם ID הזה)
+const signupButton = document.getElementById("signup-btn");
+if (signupButton) {
+  signupButton.addEventListener("click", () => {
+    window.open("signup.html", "_blank"); // משנה לכתובת עמוד רישום
+  });
+}
+
+// ✅ שינוי שפה מדומה (משנה טקסטים של כמה אלמנטים בדף)
+const langSelect = document.getElementById("lang-select");
+if (langSelect) {
+  langSelect.addEventListener("change", function () {
+    const lang = this.value;
+
+    const elements = {
+      title: document.getElementById("main-title"),
+      subtitle: document.getElementById("subtitle"),
+      services: document.getElementById("services-title")
+    };
+
+    if (lang === "he") {
+      elements.title.textContent = "בונים לכם את הבית המושלם";
+      elements.subtitle.textContent = "שיפוץ, צבע וגבס – איכות בלי פשרות";
+      elements.services.textContent = "השירותים שלנו";
+    } else if (lang === "en") {
+      elements.title.textContent = "Crafting Your Space to Perfection";
+      elements.subtitle.textContent = "Renovation, Painting & Drywall – Top Quality Guaranteed";
+      elements.services.textContent = "Our Services";
+    }
+  });
+}
+>>>>>>> 53a788c (first upload)
