@@ -1,47 +1,62 @@
-// אנימציית כניסה בגלילה
+// Fade-In Animation כשגוללים
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && !entry.target.classList.contains("visible")) {
       entry.target.classList.add("visible");
     }
   });
 });
+
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// כפתור חזרה לראש הדף
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// === כפתור שינוי שפה (עברית / אנגלית) ===
+const translations = {
+  en: {
+    title: "Crafting Your Space to Perfection",
+    servicesTitle: "Our Services",
+    service1: "Drywall & Plaster",
+    service1desc: "Installation and repair of drywall and plaster walls.",
+    service2: "Painting",
+    service2desc: "Interior and exterior painting with a clean finish.",
+    service3: "Bathroom & Kitchen Renovation",
+    service3desc: "Stylish modern upgrades for your home.",
+    aboutTitle: "Why Choose Craftix?",
+    aboutDesc: "Years of experience in home renovation – with top quality and a personal touch.",
+    footer: "All rights reserved."
+  },
+  he: {
+    title: "מעצבים את הבית שלכם לשלמות",
+    servicesTitle: "השירותים שלנו",
+    service1: "קירות גבס וטיח",
+    service1desc: "התקנה ותיקון של קירות גבס וטיח.",
+    service2: "צביעה",
+    service2desc: "צביעה פנימית וחיצונית בגימור נקי.",
+    service3: "שיפוץ מטבחים וחדרי אמבטיה",
+    service3desc: "שדרוגים מודרניים לבית.",
+    aboutTitle: "למה לבחור ב־Craftix?",
+    aboutDesc: "שנים של ניסיון עם איכות גבוהה ומגע אישי.",
+    footer: "כל הזכויות שמורות."
+  }
+};
+
+// פונקציה לשינוי שפה
+function changeLanguage(lang) {
+  const t = translations[lang];
+  document.querySelector('.hero h1').textContent = t.title;
+  document.querySelector('.services h2').textContent = t.servicesTitle;
+  const cards = document.querySelectorAll('.card');
+  cards[0].querySelector('h3').textContent = t.service1;
+  cards[0].querySelector('p').textContent = t.service1desc;
+  cards[1].querySelector('h3').textContent = t.service2;
+  cards[1].querySelector('p').textContent = t.service2desc;
+  cards[2].querySelector('h3').textContent = t.service3;
+  cards[2].querySelector('p').textContent = t.service3desc;
+  document.querySelector('.about h2').textContent = t.aboutTitle;
+  document.querySelector('.about p').textContent = t.aboutDesc;
+  document.querySelector('footer p').innerHTML = `&copy; 2025 Craftix. ${t.footer}`;
 }
 
-// הצגת כפתור החזרה לראש רק כשגוללים
-window.addEventListener("scroll", () => {
-  const topButton = document.querySelector(".top-button");
-  if (window.scrollY > 200) {
-    topButton.style.display = "block";
-  } else {
-    topButton.style.display = "none";
-  }
-});
-
-// מתרגם כותרות לפי השפה
-function switchLanguage(lang) {
-  if (lang === 'he') {
-    document.querySelector('h1').innerText = 'מעצבים את החלל שלך לשלמות';
-    document.querySelector('.cta-button').innerText = 'קבל הצעת מחיר';
-    document.querySelector('.services h2').innerText = 'השירותים שלנו';
-    document.querySelector('.about h2').innerText = 'למה לבחור ב־Craftix?';
-    document.querySelector('.about p').innerText = 'שנים של ניסיון עם איכות ברמה הגבוהה ביותר.';
-    document.querySelector('footer p').innerText = '© 2025 Craftix. כל הזכויות שמורות.';
-    document.querySelector('footer a').innerText = 'להרשמה';
-    document.querySelector('.testimonials h2').innerText = 'מה הלקוחות אומרים';
-  } else {
-    document.querySelector('h1').innerText = 'Crafting Your Space to Perfection';
-    document.querySelector('.cta-button').innerText = 'Get a Free Estimate';
-    document.querySelector('.services h2').innerText = 'Our Services';
-    document.querySelector('.about h2').innerText = 'Why Choose Craftix?';
-    document.querySelector('.about p').innerText = 'Years of experience in home renovation – with top quality and a personal touch.';
-    document.querySelector('footer p').innerText = '© 2025 Craftix. All rights reserved.';
-    document.querySelector('footer a').innerText = 'Register Now';
-    document.querySelector('.testimonials h2').innerText = 'What Our Clients Say';
-  }
-}
+// === מאזין לכפתור (אתה צריך לשים אותו בקובץ ה־HTML) ===
+// <button onclick="changeLanguage('he')">עברית</button>
+// <button onclick="changeLanguage('en')">English</button>
+// הופך את האלמנטים עם fade-in לגלויים כשמגללים

@@ -6,66 +6,30 @@
 }
 
 body {
-  background-color: #f8f9fa;
+  background-color: #f8f8f8;
   color: #222;
   line-height: 1.6;
-  scroll-behavior: smooth;
 }
 
-/* Language Switcher */
-.language-switcher {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
-}
-.language-switcher button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* Back to Top Button */
-.top-button {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  background-color: #ffaa00;
-  color: white;
-  border: none;
-  font-size: 20px;
-  padding: 12px 16px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 999;
-  display: none;
-}
-.top-button:hover {
-  background-color: #e69900;
-}
-
-/* Hero Section */
+/* Header */
 .hero {
   background: linear-gradient(to right, #1f2937, #374151);
   color: white;
-  padding: 100px 20px;
   text-align: center;
-  position: relative;
+  padding: 60px 20px;
 }
+
 .logo {
-  width: 100px;
-  margin-bottom: 15px;
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
 }
-.typewriter {
-  font-size: 2.2rem;
-  margin: 20px auto;
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
-.overlay {
-  max-width: 600px;
-  margin: auto;
-}
+
 .cta-button {
   background-color: #ffaa00;
   color: white;
@@ -73,10 +37,9 @@ body {
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
-  display: inline-block;
-  margin-top: 20px;
   transition: background-color 0.3s;
 }
+
 .cta-button:hover {
   background-color: #e69900;
 }
@@ -84,19 +47,22 @@ body {
 /* Services */
 .services {
   padding: 60px 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
 }
+
 .services h2 {
   font-size: 2rem;
   margin-bottom: 40px;
 }
+
 .service-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
+
 .card {
   background-color: #f9f9f9;
   padding: 20px;
@@ -104,21 +70,10 @@ body {
   width: 280px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 .card h3 {
   margin-bottom: 10px;
   color: #1f2937;
-}
-
-/* Testimonials */
-.testimonials {
-  padding: 60px 20px;
-  background-color: #f1f1f1;
-  text-align: center;
-}
-.testimonial {
-  margin: 20px auto;
-  font-style: italic;
-  max-width: 500px;
 }
 
 /* About */
@@ -126,6 +81,10 @@ body {
   padding: 60px 20px;
   background-color: #ededed;
   text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 20px;
 }
 
 /* Footer */
@@ -137,10 +96,10 @@ footer {
   margin-top: 40px;
 }
 
-/* WhatsApp Button */
+/* וואטסאפ */
 .whatsapp-float {
   position: fixed;
-  bottom: 25px;
+  bottom: 90px; /* מרווח מעל הצ'אט בוט */
   right: 25px;
   background-color: #25D366;
   color: white;
@@ -153,25 +112,19 @@ footer {
   transition: transform 0.2s ease;
   z-index: 1000;
 }
+
 .whatsapp-float:hover {
   transform: scale(1.1);
 }
 
-/* Fade-in Animation */
+/* אנימציית fade-in */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .service-cards {
-    flex-direction: column;
-    align-items: center;
-  }
 }
